@@ -1,29 +1,27 @@
 import openai
 from dotenv import load_dotenv
+load_dotenv()
 import os
 import json
-load_dotenv()
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-def get_crop_recommendations(soil_parameters):
+def get_recommendations(soil_parameters, existing_crop):
     conversation = [
-        {"role": "system", "content": "You are a crop recommendation system."},
-        {"role": "user", "content": soil_parameters},
-        {"role":"system","content":"Give only the names of the best 3 crops, do not number it just let it be a text:"}
+        {"role": "system", "content": "You are a helpful assistant that provides recommendations."},
+        {"role": "user", "content": f"Given the soil parameters {soil_parameters} and the existing crop {existing_crop}, what actions can I take to improve crop growth?"},
+        {"role":"system","content":"Give maximum 5 points as recommendations."}
     ]
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=conversation,
-        max_tokens=400,
+        max_tokens=500,
         n=1,
         temperature=0.6
     )
 
-    recommendations = response['choices'][0]['message']['content'].strip().split("\n")
-    
-    return recommendations
+    return response.choices[0].message["content"]
 
 if __name__ == "__main__":
     user_input = input("Please provide soil parameters as key-value pairs (e.g., pH:6.5, Water Depth:5 inches, Temperature:28°C, Fertilizer:Nitrogen, Organic Matter Content:high, Moisture Content at Harvest:22%):")
@@ -31,15 +29,13 @@ if __name__ == "__main__":
     for pair in user_input.split(','):
         key, value = pair.strip().split(':')
         user_input_dict[key.strip()] = value.strip()
-
-    recommendations = get_crop_recommendations(user_input)
-
-    conversation_data = {
+    existing_crop=input("Enter the existing Crop:")
+    recommendations = get_recommendations(user_input_dict, existing_crop)
+    data = {
         "user_input": user_input_dict,
-        "bot_reply": recommendations
+        "existing_crop": existing_crop,
+        "recommendations": recommendations
     }
-
     with open("data.json", "w") as json_file:
-        json.dump(conversation_data, json_file)
+        json.dump(data, json_file, indent=4)
 
-    print("Conversation data saved to data.json.")

@@ -1,1 +1,12 @@
-{"user_input": {"pH": "6.5", "Water Depth": "5 inches", "Temperature": "28", "Fertilizer": "Nitrogen", "Organic Matter Content": "high", "Moisture Content at Harvest": "22%"}, "bot_reply": ["Based on the provided information, the top 3 recommended crops are:", "", "1. Rice", "2. Wheat", "3. Corn"]}
+{
+    "user_input": {
+        "pH": "6.5",
+        "Water Depth": "5 inches",
+        "Temperature": "22",
+        "Fertilizer": "Phosphorus",
+        "Organic Matter Content": "Medium",
+        "Moisture Content at Harvest": "20%"
+    },
+    "existing_crop": "Rice",
+    "recommendations": "Based on the given soil parameters and existing crop of rice, here are some actions you can take to improve crop growth:\n\n1. Adjust pH levels: Rice prefers slightly acidic soil, so if the pH is not within the optimal range (around 6.0), you can make adjustments by adding soil amendments like sulfur or organic matter.\n\n2. Monitor water depth: Rice requires a specific water depth for optimal growth. Ensure that the water depth is maintained at around 2-5 inches during the growing season. Adjust the water level accordingly to avoid waterlogging or drought stress.\n\n3. Provide adequate temperature: Rice thrives in warm temperatures. If the current temperature is not within the ideal range for rice growth (around 25-35 degrees Celsius or 77-95 degrees Fahrenheit), consider using techniques like mulching or row covers to regulate soil temperature.\n\n4. Apply appropriate fertilizer: Since phosphorus is the recommended fertilizer for rice, ensure that the soil is adequately supplied with phosphorus-based fertilizers. Follow the recommended application rates and timing to promote healthy growth.\n\n5. Improve organic matter content: Rice benefits from soils with higher organic matter content. Add organic matter such as compost or well-rotted manure to improve soil structure, fertility, and water-holding capacity.\n\nRemember to regularly monitor and adjust these factors based on the specific needs of your rice crop to ensure optimal growth and productivity."
+}
