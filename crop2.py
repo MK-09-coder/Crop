@@ -36,6 +36,6 @@ if __name__ == "__main__":
         "existing_crop": existing_crop,
         "recommendations": recommendations
     }
-    with open("data.json", "w") as json_file:
+    with open("data.json", "a") as json_file:
         json.dump(data, json_file, indent=4)
 

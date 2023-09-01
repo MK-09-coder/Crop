@@ -39,5 +39,5 @@ if __name__ == "__main__":
         "bot_reply": recommendations
     }
 
-    with open("d.json", "w") as json_file:
+    with open("d.json", "a") as json_file:
         json.dump(conversation_data, json_file)
