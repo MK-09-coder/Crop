@@ -26,7 +26,7 @@ def get_crop_recommendations(soil_parameters):
     return recommendations
 
 if __name__ == "__main__":
-    user_input = input("Please provide soil parameters as key-value pairs (e.g., pH:6.5, Water Depth:5 inches, Temperature:28°C, Fertilizer:Nitrogen, Organic Matter Content:high, Moisture Content at Harvest:22%):")
+    user_input = "pH:6.5, Water_Depth:5 inches, Temperature:28°C, Fertilizer:Nitrogen, Organic_Matter_Content:high, Moisture_Content_at_Harvest:22%"
     user_input_dict = {}
     for pair in user_input.split(','):
         key, value = pair.strip().split(':')
@@ -39,5 +39,5 @@ if __name__ == "__main__":
         "bot_reply": recommendations
     }
 
-    with open("d.json", "a") as json_file:
+    with open("E:\Crop\Virtual_Farming\Virtual_Farming\Assets\Scripts\d.json", "w") as json_file:
         json.dump(conversation_data, json_file)
